@@ -19,6 +19,20 @@ El proyecto aplica de forma integrada:
 - HTML5 semántico: `header`, `main`, `section`, `form`, `footer`
 
 ---
+---
+Cómo Abrir el Proyecto Localmente
+
+Opción 1 — Live Server (recomendado)
+Abre la carpeta `ordoñez-post1-u3/` en VS Code
+Haz clic derecho sobre `index.html`
+Selecciona "Open with Live Server"
+Se abrirá automáticamente en `http://127.0.0.1:5500`
+
+Opción 2 — Abrir directamente
+Navega hasta la carpeta del proyecto
+Haz doble clic en `index.html`
+> **Recomendado:** Usar Google Chrome para inspeccionar el Box Model con DevTools (F12).
+---
 
 ## Estructura del Proyecto
 
