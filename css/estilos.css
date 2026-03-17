@@ -1,0 +1,257 @@
+/* ══════════════════════════════════════════
+   Programación Web — Unidad 3: CSS3 Básico
+   Post-Contenido 1 — Página de Perfil
+   ══════════════════════════════════════════ */
+
+/* ── Reset global ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Variables CSS (Custom Properties) ── */
+:root {
+  --color-primary   : #065A82;
+  --color-secondary : #1C7293;
+  --color-dark      : #21295C;
+  --color-text      : #000000;
+  --color-grey      : #808080;
+  --color-highlight : #E8F4F8;
+  --color-bg        : #F5F5F5;
+  --color-white     : #FFFFFF;
+  --font-base       : "Arial", Helvetica, sans-serif;
+  --radius          : 6px;
+  --shadow          : 0 2px 12px rgba(0,0,0,0.1);
+}
+
+/* ── Base documento ── */
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family : var(--font-base);
+  font-size   : 1rem;
+  line-height : 1.6;
+  color       : var(--color-text);
+  background  : var(--color-bg);
+}
+
+/* ── Contenedor centrado ── */
+.container { max-width: 960px; width: 90%; margin: 0 auto; }
+
+
+/* ══════════════════════════════
+   Paso 4 — Header fijo
+   ══════════════════════════════ */
+.site-header {
+  position   : fixed;
+  top        : 0;
+  left       : 0;
+  width      : 100%;
+  background : var(--color-primary);
+  z-index    : 100;
+  box-shadow : var(--shadow);
+}
+
+.header-inner {
+  max-width       : 960px;
+  width           : 90%;
+  margin          : 0 auto;
+  padding         : 0.8rem 0;
+  display         : flex;
+  justify-content : space-between;
+  align-items     : center;
+}
+
+.logo {
+  color          : var(--color-white);
+  font-size      : 1.2rem;
+  font-weight    : 700;
+  letter-spacing : 0.05em;
+}
+
+.main-nav a {
+  color           : var(--color-white);
+  text-decoration : none;
+  margin-left     : 1.5rem;
+  font-size       : 0.95rem;
+  transition      : opacity 0.2s;
+}
+.main-nav a:hover { opacity: 0.75; }
+
+/* Compensar header fijo: el contenido no queda tapado */
+main { padding-top: 70px; }
+
+
+/* ══════════════════════════════
+   Paso 5 — Tarjeta de Perfil con Position Relative/Absolute
+   ══════════════════════════════ */
+.profile-section {
+  padding    : 4rem 0 3rem;
+  background : var(--color-white);
+}
+
+.profile-card {
+  max-width   : 960px;
+  width       : 90%;
+  margin      : 0 auto;
+  display     : flex;
+  gap         : 2.5rem;
+  align-items : center;
+}
+
+/* Contexto de posicionamiento para el badge */
+.avatar-wrapper {
+  position    : relative; /* establece contexto de posicionamiento */
+  flex-shrink : 0;
+}
+
+.avatar {
+  width         : 160px;
+  height        : 160px;
+  border-radius : 50%;
+  object-fit    : cover;
+  border        : 4px solid var(--color-primary);
+  display       : block;
+}
+
+/* Badge posicionado absolutamente respecto a .avatar-wrapper */
+.badge {
+  position      : absolute;
+  bottom        : 4px;
+  right         : 4px;
+  background    : var(--color-secondary);
+  color         : var(--color-white);
+  font-size     : 0.7rem;
+  font-weight   : 700;
+  padding       : 2px 8px;
+  border-radius : var(--radius);
+}
+
+.profile-name  { font-size: 2rem; color: var(--color-primary); margin-bottom: 0.25rem; }
+.profile-title { color: var(--color-secondary); font-weight: 700; margin-bottom: 0.75rem; }
+.profile-bio   { color: var(--color-text); max-width: 520px; }
+
+
+/* ══════════════════════════════
+   Paso 6 — Lista de Habilidades con Selectores Avanzados
+   ══════════════════════════════ */
+.skills-section {
+  padding    : 3rem 0;
+  background : var(--color-bg);
+}
+
+/* Selector descendente: .section-title dentro de cualquier sección */
+.skills-section .section-title,
+.contact-section .section-title {
+  font-size    : 1.75rem;
+  color        : var(--color-primary);
+  margin-bottom: 1.5rem;
+  max-width    : 960px;
+  width        : 90%;
+  margin-left  : auto;
+  margin-right : auto;
+}
+
+.skills-list {
+  list-style : none;
+  display    : flex;
+  gap        : 1rem;
+  flex-wrap  : wrap;
+  max-width  : 960px;
+  width      : 90%;
+  margin     : 0 auto;
+}
+
+/* Estilos base para todos los skill items */
+.skills-list > .skill-item { /* selector hijo directo */
+  padding       : 0.5rem 1.25rem;
+  border-radius : 2rem;
+  font-weight   : 700;
+  font-size     : 0.9rem;
+  cursor        : default;
+  transition    : transform 0.15s ease;
+}
+.skills-list > .skill-item:hover { transform: translateY(-2px); }
+
+/* Modificadores BEM: color por habilidad */
+.skill-item--html { background: #F0F0F0; color: #C62828; border: 2px solid #C62828; }
+.skill-item--css  { background: #E8F4F8; color: #065A82; border: 2px solid #065A82; }
+.skill-item--js   { background: #FFF8E1; color: #F57F17; border: 2px solid #F57F17; }
+.skill-item--java { background: #E8F5E9; color: #2E7D32; border: 2px solid #2E7D32; }
+
+
+/* ══════════════════════════════
+   Paso 7 — Formulario de Contacto Accesible
+   ══════════════════════════════ */
+.contact-section {
+  padding    : 3rem 0 4rem;
+  background : var(--color-white);
+}
+
+.contact-form {
+  max-width : 560px;
+  width     : 90%;
+  margin    : 0 auto;
+}
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-group label {
+  display       : block;
+  font-weight   : 700;
+  font-size     : 0.9rem;
+  color         : var(--color-primary);
+  margin-bottom : 0.4rem;
+}
+
+/* Selector de atributo: solo inputs de texto y email */
+input[type="text"],
+input[type="email"],
+textarea {
+  width         : 100%;
+  padding       : 0.6rem 0.8rem;
+  border        : 1px solid var(--color-grey);
+  border-radius : var(--radius);
+  font-family   : inherit;
+  font-size     : 1rem;
+  color         : var(--color-text);
+  background    : var(--color-white);
+  transition    : border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Pseudo-clase :focus para accesibilidad */
+input:focus, textarea:focus {
+  outline      : none;
+  border-color : var(--color-primary);
+  box-shadow   : 0 0 0 3px rgba(6, 90, 130, 0.2);
+}
+
+/* Pseudo-elemento ::placeholder */
+::placeholder { color: var(--color-grey); font-style: italic; }
+
+textarea { resize: vertical; min-height: 120px; }
+
+/* ── Botón principal ── */
+.btn-primary {
+  display       : block;
+  width         : 100%;
+  padding       : 0.75rem;
+  background    : var(--color-primary);
+  color         : var(--color-white);
+  border        : none;
+  border-radius : var(--radius);
+  font-size     : 1rem;
+  font-weight   : 700;
+  cursor        : pointer;
+  transition    : background-color 0.2s, transform 0.1s;
+}
+.btn-primary:hover  { background: var(--color-secondary); }
+.btn-primary:active { transform: scale(0.98); }
+
+
+/* ══════════════════════════════
+   Paso 8 — Footer
+   ══════════════════════════════ */
+.site-footer {
+  text-align : center;
+  padding    : 1.5rem;
+  background : var(--color-dark);
+  color      : var(--color-white);
+  font-size  : 0.85rem;
+}
