@@ -32,21 +32,6 @@ ordoñez-post1-u3/
 └── README.md           # Este archivo
 ```
 
----
-
-## Cómo Abrir el Proyecto Localmente
-
-### Opción 1 — Live Server (recomendado)
-1. Abre la carpeta `ordoñez-post1-u3/` en **VS Code**
-2. Haz clic derecho sobre `index.html`
-3. Selecciona **"Open with Live Server"**
-4. Se abrirá automáticamente en `http://127.0.0.1:5500`
-
-### Opción 2 — Abrir directamente
-1. Navega hasta la carpeta del proyecto
-2. Haz doble clic en `index.html`
-
-> **Recomendado:** Usar Google Chrome para inspeccionar el Box Model con DevTools (F12).
 
 ---
 
